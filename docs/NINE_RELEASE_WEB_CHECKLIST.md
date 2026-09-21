@@ -17,7 +17,7 @@ The web implementation can progress before every launch asset exists, but the pu
 
 - [x] apply approved public name: **Exactly One** (App Store: **Exactly One: Logic Puzzle**)
 - [x] replace development-only identity/codename copy
-- Existing `/games/nine`, `/support/nine`, and `/privacy/nine` paths remain stable technical identifiers. A public URL migration is not part of the naming change.
+- [x] use `/games/exactly-one`, `/support/exactly-one`, and `/privacy/exactly-one` as public routes; permanently redirect the previous `nine` paths so existing app links remain valid
 - [ ] add final app icon / hero treatment
 - [ ] add real gameplay screenshots
 - [ ] add launch gameplay video/preview if used
