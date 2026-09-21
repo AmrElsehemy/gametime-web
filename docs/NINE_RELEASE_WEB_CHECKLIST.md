@@ -1,4 +1,4 @@
-# Game #001 Web Release Checklist
+# Exactly One Web Release Checklist
 
 The web implementation can progress before every launch asset exists, but the public submission surfaces are not considered finished until each external dependency below is real and verified.
 
@@ -15,8 +15,9 @@ The web implementation can progress before every launch asset exists, but the pu
 
 ## Deliberately due before App Store submission
 
-- [ ] freeze public game name and canonical public slug
-- [ ] replace development-only identity/codename copy
+- [x] apply approved public name: **Exactly One** (App Store: **Exactly One: Logic Puzzle**)
+- [x] replace development-only identity/codename copy
+- Existing `/games/nine`, `/support/nine`, and `/privacy/nine` paths remain stable technical identifiers. A public URL migration is not part of the naming change.
 - [ ] add final app icon / hero treatment
 - [ ] add real gameplay screenshots
 - [ ] add launch gameplay video/preview if used
