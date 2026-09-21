@@ -15,14 +15,14 @@ export type GameRecord = {
 export const games: GameRecord[] = [
   {
     internalCodename: "Nine",
-    slug: "nine",
-    publicName: null,
+    slug: "exactly-one",
+    publicName: "Exactly One",
     status: "development",
-    premise: "Place one tactile pebble in every territory without sharing a row, column, region, or touching a neighbor.",
-    shortDescription: "A calm, tactile constraint puzzle built around colorful territories and satisfying placement.",
+    premise: "A tactile logic puzzle. One pebble in every row. One in every column. One in every territory. No two may touch.",
+    shortDescription: "Exactly One is a tactile logic puzzle. One pebble. Every territory.",
     appStoreUrl: null,
-    supportPath: "/support/nine",
-    privacyPath: "/privacy/nine",
+    supportPath: "/support/exactly-one",
+    privacyPath: "/privacy/exactly-one",
   },
 ];
 

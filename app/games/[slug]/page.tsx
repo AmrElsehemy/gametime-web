@@ -104,7 +104,7 @@ export default async function GamePage({
             <p>{game.shortDescription}</p>
           ) : (
             <p>
-              “Nine” is still the internal codename. The public title, final icon, screenshots and App Store URL are intentionally not fabricated before the visual/name release gate is complete.
+              The public title and release details will appear here once approved. Store links are published only when a real listing exists.
             </p>
           )}
           <p>
