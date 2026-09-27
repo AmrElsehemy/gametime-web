@@ -33,3 +33,13 @@ export function getGame(slug: string): GameRecord | undefined {
 export function displayName(game: GameRecord): string {
   return game.publicName ?? "Game #001";
 }
+
+const statusLabels: Record<GameStatus, string> = {
+  development: "In development",
+  testflight: "TestFlight",
+  available: "Available",
+};
+
+export function statusLabel(status: GameStatus): string {
+  return statusLabels[status];
+}

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { displayName, getGame } from "@/lib/games";
+import { displayName, getGame, statusLabel } from "@/lib/games";
 
 export async function generateMetadata({
   params,
@@ -41,7 +41,7 @@ export default async function GamePage({
       <section className="hero">
         <div>
           <p className="eyebrow">
-            {name} · {game.status === "development" ? "In development" : game.status}
+            {name} · {statusLabel(game.status)}
           </p>
           <h1>{game.publicName ?? "Something tactile is taking shape."}</h1>
           <p className="lede">{game.premise}</p>
