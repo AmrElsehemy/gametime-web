@@ -39,7 +39,7 @@ npm run build
 - `/terms` — terms baseline
 - `/press` — press/media destination
 
-The first game is **Exactly One**, a tactile logic puzzle from Knowlly Games. Its approved App Store title is **Exactly One: Logic Puzzle**, with subtitle **One pebble. Every territory.** The shared game registry supplies its name to landing, support, privacy, and Open Graph surfaces. Public routes use `exactly-one`; previous `nine` paths permanently redirect in a single hop (handled in `proxy.ts`, which also strips trailing slashes), including game image subpaths and support query strings. The internal engineering codename remains Nine.
+The first game is **Exactly One**, a tactile logic puzzle from Knowlly Games. Its approved App Store title is **Exactly One: Logic Puzzle**, with subtitle **One pebble. Every territory.** The shared game registry supplies its name to landing, support, privacy, and Open Graph surfaces. Public routes use `exactly-one`; previous `nine` paths permanently redirect in a single hop (handled in `proxy.ts`, which also strips trailing slashes), including game image subpaths and support query strings.
 
 Store links, final privacy disclosures and launch assets are intentionally not fabricated before they exist. Name approval does not establish App Store reservation, trademark clearance, or release availability.
 
