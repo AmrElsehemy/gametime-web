@@ -1,7 +1,6 @@
 export type GameStatus = "development" | "testflight" | "available";
 
 export type GameRecord = {
-  internalCodename: string;
   slug: string;
   publicName: string | null;
   status: GameStatus;
@@ -14,7 +13,6 @@ export type GameRecord = {
 
 export const games: GameRecord[] = [
   {
-    internalCodename: "Nine",
     slug: "exactly-one",
     publicName: "Exactly One",
     status: "development",
