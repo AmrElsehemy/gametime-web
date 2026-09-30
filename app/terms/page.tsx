@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { supportEmail } from "@/lib/site";
 
 export const metadata: Metadata = { title: "Terms" };
 
@@ -8,12 +9,25 @@ export default function TermsPage() {
       <section className="page-hero">
         <p className="eyebrow">Terms</p>
         <h1>Terms of use.</h1>
-        <p className="lede">The final release terms will be published before the first Knowlly Games title ships.</p>
+        <p className="lede">Knowlly Games apps are distributed through Apple&rsquo;s App Store.</p>
       </section>
       <section className="legal-card">
-        <p>This route is intentionally present before launch so release URLs are stable. It is not presented as final legal language.</p>
-        <h2>Release gate</h2>
-        <p>Final terms must reflect the actual game features, purchases, advertising and applicable store requirements before App Store submission.</p>
+        <h2>Apps</h2>
+        <p>
+          Our apps are licensed to you under Apple&rsquo;s{" "}
+          <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">
+            Licensed Application End User License Agreement
+          </a>
+          .
+        </p>
+        <h2>This website</h2>
+        <p>
+          This website is provided for information about our games. Game names, artwork and text are owned by Knowlly Games.
+        </p>
+        <h2>Contact</h2>
+        <p>
+          <a href={`mailto:${supportEmail}`}>{supportEmail}</a>
+        </p>
       </section>
     </>
   );
