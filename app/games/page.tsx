@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { displayName, games } from "@/lib/games";
+import { displayName, games, statusLabel } from "@/lib/games";
 
 export const metadata: Metadata = {
   title: "Games",
@@ -22,7 +22,7 @@ export default function GamesPage() {
         <div className="card-grid">
           {games.map((game) => (
           <article className="card" key={game.slug}>
-            <span className="tag">{game.status === "development" ? "In development" : game.status === "testflight" ? "TestFlight" : "Available"}</span>
+            <span className="tag">{statusLabel(game.status)}</span>
             <div>
               <h3>{displayName(game)}</h3>
               <p>{game.shortDescription}</p>

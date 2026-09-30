@@ -4,6 +4,8 @@ import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  // Without this, Open Graph image URLs resolve against a preview/localhost origin.
+  metadataBase: new URL(process.env.SITE_URL ?? "https://knowlly.games"),
   title: {
     default: "Knowlly Games",
     template: "%s · Knowlly Games",
