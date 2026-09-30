@@ -22,12 +22,12 @@ The web implementation can progress before every launch asset exists, but the pu
 - [ ] add real gameplay screenshots
 - [ ] add launch gameplay video/preview if used
 - [ ] insert verified App Store URL only after the listing exists
-- [ ] publish a verified public support contact channel
-- [ ] freeze final production SDK set on iOS
-- [ ] make privacy copy match the shipping binary, SDK privacy manifests and App Store privacy answers
-- [ ] review/finalize legal terms where required
-- [ ] deploy to Vercel production/staging
-- [ ] attach/verify `knowlly.games` only after domain ownership/DNS are confirmed
+- [x] publish a verified public support contact channel (`help@knowlly.games`)
+- [x] freeze final production SDK set on iOS (v1 is ad-free: no ads, analytics or purchase SDKs; Game Center only)
+- [x] make privacy copy match the shipping binary, SDK privacy manifests and App Store privacy answers ("Data Not Collected")
+- [x] review/finalize legal terms where required (apps use Apple's standard EULA)
+- [x] deploy to Vercel production/staging
+- [x] attach/verify `knowlly.games` only after domain ownership/DNS are confirmed
 - [ ] verify all URLs from a phone and desktop
 - [ ] use the final support/privacy URLs in App Store Connect
 
