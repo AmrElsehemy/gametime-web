@@ -41,6 +41,8 @@ npm run build
 
 The first game is **Exactly One**, a tactile logic puzzle from Knowlly Games. Its approved App Store title is **Exactly One: Logic Puzzle**, with subtitle **One pebble. Every territory.** The shared game registry supplies its name to landing, support, privacy, and Open Graph surfaces. Public routes use `exactly-one`; previous `nine` paths permanently redirect in a single hop (handled in `proxy.ts`, which also strips trailing slashes), including game image subpaths and support query strings.
 
+The second game is **Top Off**, a calm pouring puzzle (status: in development, no App Store link yet). Per-game landing, support and privacy copy lives in the registry in `lib/games.ts`, so adding a game means adding one entry there.
+
 Store links, final privacy disclosures and launch assets are intentionally not fabricated before they exist. Name approval does not establish App Store reservation, trademark clearance, or release availability.
 
 ## Not the backend
