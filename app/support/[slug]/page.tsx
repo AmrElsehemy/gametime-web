@@ -36,7 +36,7 @@ export default async function GameSupportPage({
       "",
       "What you expected:",
       "",
-      "Puzzle number (if any):",
+      ...game.problemReportFields,
       "App version and build (Settings → About):",
       "iPhone model and iOS version:",
     ].join("\n"),
@@ -62,35 +62,15 @@ export default async function GameSupportPage({
 
       <section className="section">
         <div className="card-grid">
-          <article className="card">
-            <span className="tag">Stuck</span>
-            <div>
-              <h3>A puzzle feels impossible</h3>
-              <p>
-                Every puzzle has exactly one solution. Tap Hint for the next step, or Reset to start the board again. Pre-placed pebbles are part of the puzzle and can&rsquo;t be moved.
-              </p>
-            </div>
-          </article>
-
-          <article className="card">
-            <span className="tag">Offline</span>
-            <div>
-              <h3>No connection?</h3>
-              <p>
-                The whole game works offline, including the daily puzzle. Only the optional Game Center leaderboard and achievements need a connection.
-              </p>
-            </div>
-          </article>
-
-          <article className="card">
-            <span className="tag">Settings</span>
-            <div>
-              <h3>Sound, haptics and progress</h3>
-              <p>
-                Open Settings in the game to turn sound or haptics off, or to reset your progress. Resetting cannot be undone and does not remove Game Center achievements.
-              </p>
-            </div>
-          </article>
+          {game.supportCards.map((card) => (
+            <article className="card" key={card.tag}>
+              <span className="tag">{card.tag}</span>
+              <div>
+                <h3>{card.title}</h3>
+                <p>{card.body}</p>
+              </div>
+            </article>
+          ))}
         </div>
       </section>
 
@@ -98,7 +78,7 @@ export default async function GameSupportPage({
         <div className="legal-card">
           <h3>Reporting a problem</h3>
           <p>
-            Tell us what happened, the puzzle number if there is one, and the app version and build from Settings → About. Please don&rsquo;t send passwords or payment details.
+            Tell us what happened, where in the game it happened, and the app version and build from Settings → About. Please don&rsquo;t send passwords or payment details.
           </p>
           <h2>Purchases</h2>
           <p>{name} has no ads and no in-app purchases, so there is nothing to buy or restore.</p>

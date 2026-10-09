@@ -41,20 +41,24 @@ export default async function GamePrivacyPage({
       </section>
 
       <section className="legal-card">
-        <p>Effective 30 September 2026. This policy covers the {name} iOS app and this website.</p>
+        <p>Effective {game.privacyEffective}. This policy covers the {name} iOS app and this website.</p>
 
         <h2>Data stored on your device</h2>
         <p>
-          The game saves your puzzle progress, your current puzzle, your daily streak, whether you have finished the introduction, and your sound and haptics settings. This data stays on your device. It is not sent to us or to anyone else.
+          The game saves {game.storedData}. This data stays on your device. It is not sent to us or to anyone else.
         </p>
         <p>
-          You can delete it at any time with Settings → Reset Gameplay Data, or by deleting the app.
+          You can delete it at any time by deleting the app.
         </p>
 
-        <h2>Game Center (optional)</h2>
-        <p>
-          If you sign in to Game Center, achievements and daily-puzzle times are sent to Apple&rsquo;s Game Center service. Apple handles that data under its own privacy policy, and your Game Center settings control who can see your profile and leaderboard entries. The game works fully without Game Center.
-        </p>
+        {game.usesGameCenter && (
+          <>
+            <h2>Game Center (optional)</h2>
+            <p>
+              If you sign in to Game Center, achievements and daily-puzzle times are sent to Apple&rsquo;s Game Center service. Apple handles that data under its own privacy policy, and your Game Center settings control who can see your profile and leaderboard entries. The game works fully without Game Center.
+            </p>
+          </>
+        )}
 
         <h2>Advertising, tracking and analytics</h2>
         <p>

@@ -308,3 +308,25 @@ h3 {
     grid-template-columns: 1fr;
   }
 }
+
+.preview-bottles {
+  position: absolute;
+  inset: 14% 10%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 10px;
+  transform: rotate(-3deg);
+}
+
+.preview-bottles span {
+  flex: 1;
+  height: 72%;
+  border-radius: 14px 14px 26px 26px;
+  background: linear-gradient(to top, #82c8c6 0 25%, #edc966 25% 50%, color-mix(in srgb, var(--accent) 72%, white) 50% 75%, #9d8bd5 75%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.preview-bottles span:nth-child(2) { height: 84%; }
+.preview-bottles span:nth-child(4) { background: rgba(255, 255, 255, 0.5); border: 2px solid rgba(0, 0, 0, 0.08); }
+.preview-bottles span:nth-child(5) { height: 60%; }

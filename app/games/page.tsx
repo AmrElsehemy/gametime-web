@@ -14,7 +14,7 @@ export default function GamesPage() {
         <p className="eyebrow">Games</p>
         <h1>Small games. Built properly.</h1>
         <p className="lede">
-          Our first title is in development. We will only publish store links when a game is actually available.
+          Our first games are on their way. We will only publish store links when a game is actually available.
         </p>
       </section>
 
