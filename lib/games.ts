@@ -26,10 +26,10 @@ export const games: GameRecord[] = [
   {
     slug: "exactly-one",
     publicName: "Exactly One",
-    status: "review",
+    status: "available",
     premise: "A tactile logic puzzle. One pebble in every row. One in every column. One in every territory. No two may touch.",
-    shortDescription: "Exactly One is a tactile logic puzzle. One pebble. Every territory.",
-    appStoreUrl: null,
+    shortDescription: "Play Exactly One free on iPhone and iPad. Solve 100 uniquely solvable logic puzzles, take on a new daily challenge, and climb the Game Center leaderboard.",
+    appStoreUrl: "https://apps.apple.com/us/app/exactly-one-logic-puzzle/id6818081491",
     supportPath: "/support/exactly-one",
     privacyPath: "/privacy/exactly-one",
     preview: "pebbles",
