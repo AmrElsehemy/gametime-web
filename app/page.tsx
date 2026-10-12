@@ -31,6 +31,15 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="section geo-teaser">
+        <div>
+          <p className="eyebrow">A new Knowlly Games world</p>
+          <h2>Meet Geographica. 🌍</h2>
+          <p className="lede">Flags, maps, capitals and daily geography puzzles. A new collection of bite-sized ways to explore the world is taking shape.</p>
+          <Link className="button primary" href="/geographica">Explore Geographica</Link>
+        </div>
+      </section>
+
       <section className="section">
         <div className="section-heading">
           <div>
