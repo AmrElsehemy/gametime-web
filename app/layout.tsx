@@ -22,6 +22,7 @@ export const metadata: Metadata = {
 
 const navItems = [
   ["Games", "/games"],
+  ["Geographica", "/geographica"],
   ["Support", "/support"],
   ["Press", "/press"],
 ] as const;
