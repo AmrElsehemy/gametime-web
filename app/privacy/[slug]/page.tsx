@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import { supportEmail, supportMailto } from "@/lib/support";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { displayName, getGame } from "@/lib/games";
+import { FlagTrekPrivacy } from "./FlagTrekPrivacy";
 
 export async function generateMetadata({
   params,
@@ -29,45 +31,94 @@ export default async function GamePrivacyPage({
 
   const name = displayName(game);
 
+  if (game.slug === "geographica-flag-trek") return <FlagTrekPrivacy game={game} name={name} />;
+
   return (
     <>
       <section className="page-hero">
         <p className="eyebrow">{name} · Privacy</p>
-        <h1>Privacy, before release.</h1>
+        <h1>Your privacy.</h1>
         <p className="lede">
-          This page tracks the game-specific privacy surface while {name} is still in development. Final App Store disclosures will be frozen against the exact production SDK set before submission.
+          This policy explains how Knowlly Games handles information in {name}.
+          Effective September 24, 2026.
         </p>
       </section>
 
       <section className="legal-card">
-        <h3>Current architecture</h3>
+        <h2>Playing and saving on your device</h2>
         <p>
-          Core gameplay is designed to work offline and without a proprietary Knowlly Games account. Puzzle progress is local-first. The game does not require a Game Time backend connection to launch or complete normal bundled puzzles.
+          No Knowlly account is required. Bundled puzzles work offline. Puzzle
+          progress, the active puzzle, daily and streak progress, tutorial completion,
+          sound and haptic preferences, and a first-open flag are stored on your
+          device. The app does not upload these records to a Knowlly server.
+          Device backups may be managed separately by your Apple settings.
         </p>
-
-        <h2>Optional platform services</h2>
+        <h2>Game Center</h2>
         <p>
-          Game Center, rewarded advertising, analytics, purchases and diagnostics are separate capabilities. They must be disclosed here and in App Store privacy metadata only when the production implementation is actually enabled.
+          The app requests Game Center authentication when normal play starts.
+          You can decline and continue playing. When connected, it sends completed
+          achievements and daily puzzle completion times to Apple Game Center,
+          associated with your Game Center player, and retrieves completed achievements.
+          Scores and your Game Center profile may be visible according to your
+          Apple settings. We do not copy this information to a separate backend.
+          Manage Game Center in your device settings. Apple’s handling of this
+          information is described in its <a href="https://www.apple.com/legal/privacy/data/en/game-center/">Game Center privacy notice</a>.
         </p>
-
-        <h2>Advertising</h2>
+        <h2>Advertising and tracking</h2>
         <p>
-          The current release plan allows optional rewarded advertising after onboarding, but the production advertising integration is not yet frozen. This page must be updated with the final provider, data practices and consent behavior before public release.
+          This version contains no advertising SDK and displays no ads. It does
+          not access your advertising identifier, request tracking permission,
+          or track you across other companies’ apps or websites.
         </p>
-
-        <h2>Diagnostics</h2>
+        <h2>Analytics, diagnostics and replays</h2>
         <p>
-          The planned Report Problem flow is designed to share only the technical context needed to reproduce an issue, such as app version, puzzle version and a replay reference. Personal content should not be attached unless the player explicitly provides it.
+          Gameplay events, timing, diagnostic breadcrumbs and puzzle replays are
+          held locally in memory for the current session. The analytics event
+          buffer keeps at most 200 events. Development builds can print events to
+          the local console and export replay files locally. There is no remote
+          analytics service, crash-reporting SDK or automatic diagnostic upload.
+          Apple may separately process diagnostics according to your device and
+          TestFlight settings.
         </p>
-
-        <h2>Your choices</h2>
+        <h2>Purchases</h2>
         <p>
-          Core play must not depend on advertising personalization or tracking permission. Sound, haptics and local-data controls are part of the game settings roadmap.
+          This version has no paid entitlements or in-app purchase flow. If you
+          tap Restore Purchases, StoreKit asks Apple to synchronize purchase
+          information. The app does not send receipts or purchase history to
+          Knowlly and does not receive payment-card details.
         </p>
-
-        <h2>Release gate</h2>
+        <h2>Contacting support</h2>
         <p>
-          This is a pre-release transparency page, not the final legal notice. App Store submission is blocked until this text matches the shipping binary and production SDK privacy manifests.
+          Report a Problem opens our support website without attaching diagnostics.
+          If you email us, we receive your email address, message and any attachments
+          you choose to send. We use them to respond, investigate the issue and
+          handle privacy requests. Email providers process correspondence to deliver
+          and store it. We keep support correspondence only as long as needed to
+          handle the request and meet applicable legal obligations; you may request
+          deletion by emailing <a href={supportMailto}>{supportEmail}</a>.
+          Do not send passwords or payment-card details.
+        </p>
+        <h2>Website visits</h2>
+        <p>
+          Opening a support or privacy link makes a separate website request.
+          The hosting service receives connection information such as your IP
+          address and browser details to deliver and protect the site. These
+          pages contain no added advertising or analytics SDK.
+        </p>
+        <h2>Your choices and deletion</h2>
+        <p>
+          Settings → Reset Gameplay Data clears local gameplay and tutorial
+          progress, while keeping sound and haptic preferences. It does not erase
+          Game Center records or the first-open flag. Deleting the app removes
+          its local app data; Apple backups and Game Center records are managed
+          separately through Apple. Contact us for access, correction or deletion
+          of support correspondence and other privacy requests.
+        </p>
+        <h2>Policy updates</h2>
+        <p>
+          We update this policy when our data practices change and show the
+          effective date above. Privacy questions can be sent to
+          {" "}<a href={supportMailto}>{supportEmail}</a>.
         </p>
 
         <p>

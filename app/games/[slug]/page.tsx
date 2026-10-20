@@ -55,45 +55,35 @@ export default async function GamePage({
           </div>
         </div>
 
-        <div className="game-preview" aria-label="Abstract preview of the territory-placement game">
-          <div className="preview-grid" aria-hidden="true">
-            {Array.from({ length: 16 }, (_, index) => (
-              index === 1 || index === 11 ? <i key={index} /> : <span key={index} />
-            ))}
+        {game.showPebblePreview && (
+          <div className="game-preview" aria-label="Abstract preview of the territory-placement game">
+            <div className="preview-grid" aria-hidden="true">
+              {Array.from({ length: 16 }, (_, index) => (
+                index === 1 || index === 11 ? <i key={index} /> : <span key={index} />
+              ))}
+            </div>
           </div>
-        </div>
+        )}
       </section>
 
       <section className="section">
         <div className="section-heading">
           <div>
             <p className="eyebrow">The idea</p>
-            <h2>Quiet rules. Tactile decisions.</h2>
+            <h2>{game.idea.heading}</h2>
           </div>
         </div>
 
         <div className="card-grid">
-          <article className="card">
-            <span className="tag">Place</span>
-            <div>
-              <h3>One pebble per territory</h3>
-              <p>Every colored territory needs exactly one placement.</p>
-            </div>
-          </article>
-          <article className="card">
-            <span className="tag">Separate</span>
-            <div>
-              <h3>Rows and columns stay unique</h3>
-              <p>No two pebbles can share the same row or column.</p>
-            </div>
-          </article>
-          <article className="card">
-            <span className="tag">Space</span>
-            <div>
-              <h3>No touching</h3>
-              <p>Neighboring pebbles need breathing room, including diagonally.</p>
-            </div>
-          </article>
+          {game.idea.cards.map((card) => (
+            <article className="card" key={card.title}>
+              <span className="tag">{card.tag}</span>
+              <div>
+                <h3>{card.title}</h3>
+                <p>{card.body}</p>
+              </div>
+            </article>
+          ))}
         </div>
       </section>
 
