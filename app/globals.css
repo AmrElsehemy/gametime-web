@@ -331,6 +331,26 @@ h3 {
 .preview-bottles span:nth-child(4) { background: rgba(255, 255, 255, 0.5); border: 2px solid rgba(0, 0, 0, 0.08); }
 .preview-bottles span:nth-child(5) { height: 60%; }
 
+.preview-flags {
+  position: absolute;
+  inset: 16% 12%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+  transform: rotate(-4deg);
+}
+
+.preview-flags span {
+  height: 26%;
+  border-radius: 12px;
+  background: linear-gradient(to right, #82c8c6 0 33%, #f7f4ec 33% 66%, color-mix(in srgb, var(--accent) 72%, white) 66%);
+  box-shadow: 0 8px 18px rgba(34, 34, 31, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.preview-flags span:nth-child(2) { width: 88%; margin-left: 8%; background: linear-gradient(to bottom, #edc966 0 50%, #9d8bd5 50%); }
+.preview-flags span:nth-child(3) { width: 80%; background: linear-gradient(to bottom, #ff9d8d 0 33%, #f7f4ec 33% 66%, #22221f 66%); }
+
 /* Geographica: a franchise within the Knowlly Games site */
 .geo-hero { position: relative; max-width: 980px; overflow: hidden; }
 .geo-hero h1 { position: relative; z-index: 1; }

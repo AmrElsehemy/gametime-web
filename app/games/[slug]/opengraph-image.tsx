@@ -49,47 +49,92 @@ export default async function OpenGraphImage({
             borderRadius: 60,
             display: "flex",
             flexWrap: "wrap",
+            alignContent: "center",
             padding: 36,
             gap: 10,
             background: "rgba(255,255,255,0.72)",
             boxShadow: "0 24px 70px rgba(34,34,31,0.14)",
           }}
         >
-          {Array.from({ length: 16 }, (_, index) => (
-            <div
-              key={index}
-              style={{
-                width: 64,
-                height: 64,
-                borderRadius: 18,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                background:
-                  index % 5 === 0
-                    ? "#9d8bd5"
-                    : index % 4 === 0
-                      ? "#edc966"
-                      : index % 3 === 0
-                        ? "#82c8c6"
-                        : "#ff9d8d",
-              }}
-            >
-              {index === 2 || index === 13 ? (
-                <div
-                  style={{
-                    width: 30,
-                    height: 30,
-                    borderRadius: 16,
-                    background: "#22221f",
-                  }}
-                />
-              ) : null}
-            </div>
-          ))}
+          {game?.preview === "flags"
+            ? flagArt()
+            : game?.preview === "bottles"
+              ? bottleArt()
+              : pebbleArt()}
         </div>
       </div>
     ),
     size,
   );
+}
+
+function pebbleArt() {
+  return Array.from({ length: 16 }, (_, index) => (
+    <div
+      key={index}
+      style={{
+        width: 64,
+        height: 64,
+        borderRadius: 18,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        background:
+          index % 5 === 0
+            ? "#9d8bd5"
+            : index % 4 === 0
+              ? "#edc966"
+              : index % 3 === 0
+                ? "#82c8c6"
+                : "#ff9d8d",
+      }}
+    >
+      {index === 2 || index === 13 ? (
+        <div
+          style={{
+            width: 30,
+            height: 30,
+            borderRadius: 16,
+            background: "#22221f",
+          }}
+        />
+      ) : null}
+    </div>
+  ));
+}
+
+function bottleArt() {
+  return Array.from({ length: 4 }, (_, index) => (
+    <div
+      key={index}
+      style={{
+        width: 58,
+        height: [220, 260, 180, 240][index],
+        marginTop: "auto",
+        borderRadius: "16px 16px 28px 28px",
+        display: "flex",
+        background: "linear-gradient(to top, #82c8c6 0%, #82c8c6 25%, #edc966 25%, #edc966 50%, #ff9d8d 50%, #ff9d8d 75%, #9d8bd5 75%)",
+      }}
+    />
+  ));
+}
+
+function flagArt() {
+  const flags = [
+    "linear-gradient(to right, #82c8c6 0%, #82c8c6 33%, #f7f4ec 33%, #f7f4ec 66%, #ff9d8d 66%)",
+    "linear-gradient(to bottom, #edc966 0%, #edc966 50%, #9d8bd5 50%)",
+    "linear-gradient(to bottom, #ff9d8d 0%, #ff9d8d 33%, #f7f4ec 33%, #f7f4ec 66%, #22221f 66%)",
+  ];
+  return flags.map((background, index) => (
+    <div
+      key={index}
+      style={{
+        width: 288,
+        height: 76,
+        borderRadius: 12,
+        display: "flex",
+        background,
+      }}
+    />
+  ));
 }

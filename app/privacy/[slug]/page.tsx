@@ -51,11 +51,11 @@ export default async function GamePrivacyPage({
           You can delete it at any time by deleting the app.
         </p>
 
-        {game.usesGameCenter && (
+        {game.gameCenterData && (
           <>
             <h2>Game Center (optional)</h2>
             <p>
-              If you sign in to Game Center, achievements and daily-puzzle times are sent to Apple&rsquo;s Game Center service. Apple handles that data under its own privacy policy, and your Game Center settings control who can see your profile and leaderboard entries. The game works fully without Game Center.
+              If you sign in to Game Center, the game sends {game.gameCenterData} to Apple&rsquo;s Game Center service. Apple handles that data under its own privacy policy, and your Game Center settings control who can see your profile and leaderboard entries. The game works fully without Game Center.
             </p>
           </>
         )}

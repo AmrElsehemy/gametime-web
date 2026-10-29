@@ -62,6 +62,12 @@ export default async function GamePage({
                 <span key={index} />
               ))}
             </div>
+          ) : game.preview === "flags" ? (
+            <div className="preview-flags" aria-hidden="true">
+              {Array.from({ length: 3 }, (_, index) => (
+                <span key={index} />
+              ))}
+            </div>
           ) : (
             <div className="preview-grid" aria-hidden="true">
               {Array.from({ length: 16 }, (_, index) => (
