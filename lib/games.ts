@@ -11,14 +11,15 @@ export type GameRecord = {
   appStoreUrl: string | null;
   supportPath: string;
   privacyPath: string;
-  preview: "pebbles" | "bottles";
+  preview: "pebbles" | "bottles" | "flags";
   rulesHeading: string;
   rules: GameCard[];
   supportCards: GameCard[];
   problemReportFields: string[];
   /** Game-specific data the app keeps on the device. */
   storedData: string;
-  usesGameCenter: boolean;
+  /** What the game sends to Game Center, or null if it does not use Game Center. */
+  gameCenterData: string | null;
   privacyEffective: string;
 };
 
@@ -43,7 +44,7 @@ export const games: GameRecord[] = [
       {
         tag: "Stuck",
         title: "A puzzle feels impossible",
-        body: "Every puzzle has exactly one solution. Tap Hint for the next step, or Reset to start the board again. Pre-placed pebbles are part of the puzzle and can’t be moved.",
+        body: "Every puzzle has exactly one solution. Tap Hint for the next step, or Reset to start the board again. Pre-placed pebbles are part of the puzzle and can\u2019t be moved.",
       },
       {
         tag: "Offline",
@@ -58,46 +59,8 @@ export const games: GameRecord[] = [
     ],
     problemReportFields: ["Puzzle number (if any):"],
     storedData: "your puzzle progress, your current puzzle, your daily streak, whether you have finished the introduction, and your sound and haptics settings",
-    usesGameCenter: true,
+    gameCenterData: "achievements and daily-puzzle times",
     privacyEffective: "30 September 2026",
-  },
-  {
-    slug: "geographica-flag-trek",
-    publicName: "Geographica: Flag Trek",
-    status: "development",
-    premise: "Trek around the world one flag at a time. Name each flag, keep your fuel up and collect stars on the way to the next stop.",
-    shortDescription: "Geographica: Flag Trek is a flag quiz adventure. Name the flag, keep your fuel up, collect the stars.",
-    appStoreUrl: null,
-    supportPath: "/support/geographica-flag-trek",
-    privacyPath: "/privacy/geographica-flag-trek",
-    preview: "pebbles",
-    rulesHeading: "Easy to start. Sneaky later on.",
-    rules: [
-      { tag: "Trek", title: "A map of stops", body: "Work through the stops on the world map. Each one is a short round of flags to name." },
-      { tag: "Fuel", title: "Three fuel, no free passes", body: "A wrong answer costs fuel. Run dry and you can try the stop again." },
-      { tag: "Daily", title: "A daily challenge", body: "Everyone gets the same ten flags each day. Your first attempt counts for the Game Center leaderboard." },
-    ],
-    supportCards: [
-      {
-        tag: "Fuel",
-        title: "I ran out of fuel",
-        body: "A wrong answer costs fuel. When it runs out the round ends, and you can try the stop again.",
-      },
-      {
-        tag: "Daily Challenge",
-        title: "How the daily works",
-        body: "Everyone gets the same ten flags each UTC day. Only your first attempt that day is posted to the leaderboard; practice rounds never are.",
-      },
-      {
-        tag: "Offline play",
-        title: "No connection?",
-        body: "The whole game works offline. Game Center needs an internet connection for the leaderboard, but is not required to play.",
-      },
-    ],
-    problemReportFields: ["Flag or country (if relevant):"],
-    storedData: "your trek progress and stars, tutorial completion, sound and haptic preferences, and any Daily Challenge score waiting to be sent to Game Center",
-    usesGameCenter: true,
-    privacyEffective: "18 October 2026",
   },
   {
     slug: "top-off",
@@ -134,8 +97,46 @@ export const games: GameRecord[] = [
     ],
     problemReportFields: ["Level or mode (Campaign, Daily, Endless):"],
     storedData: "your level progress and stars, your daily streak, and your sound and haptics settings",
-    usesGameCenter: false,
+    gameCenterData: null,
     privacyEffective: "9 October 2026",
+  },
+  {
+    slug: "geographica-flag-trek",
+    publicName: "Geographica: Flag Trek",
+    status: "development",
+    premise: "Trek around the world one flag at a time. Name each flag, keep your fuel up and collect stars on the way to the next stop.",
+    shortDescription: "Geographica: Flag Trek is a flag quiz adventure. Name the flag, keep your fuel up, collect the stars.",
+    appStoreUrl: null,
+    supportPath: "/support/geographica-flag-trek",
+    privacyPath: "/privacy/geographica-flag-trek",
+    preview: "flags",
+    rulesHeading: "Easy to start. Sneaky later on.",
+    rules: [
+      { tag: "Trek", title: "A map of stops", body: "Work through the stops on the world map. Each one is a short round of flags to name." },
+      { tag: "Fuel", title: "Three fuel, no free passes", body: "A wrong answer costs fuel. Run dry and you can try the stop again." },
+      { tag: "Daily", title: "A daily challenge", body: "Everyone gets the same ten flags each day. Your first attempt counts for the Game Center leaderboard." },
+    ],
+    supportCards: [
+      {
+        tag: "Fuel",
+        title: "I ran out of fuel",
+        body: "A wrong answer costs fuel. When it runs out the round ends, and you can try the stop again.",
+      },
+      {
+        tag: "Daily",
+        title: "How the daily works",
+        body: "Everyone gets the same ten flags each UTC day. Only your first attempt that day is posted to the leaderboard; practice rounds never are.",
+      },
+      {
+        tag: "Offline",
+        title: "No connection?",
+        body: "The whole game works offline. Game Center needs an internet connection for the leaderboard, but is not required to play.",
+      },
+    ],
+    problemReportFields: ["Stop or Daily Challenge:", "Flag\u2019s country (if it is about an answer):"],
+    storedData: "your trek progress and stars, whether you have finished the tutorial, your sound and haptics settings, and any Daily Challenge score waiting to be sent to Game Center",
+    gameCenterData: "the score of your first Daily Challenge attempt each day",
+    privacyEffective: "18 October 2026",
   },
 ];
 

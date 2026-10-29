@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import { supportEmail, supportMailto } from "@/lib/site";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { displayName, getGame } from "@/lib/games";
-import { FlagTrekSupport } from "./FlagTrekSupport";
+import { supportEmail, supportMailto } from "@/lib/site";
 
 export async function generateMetadata({
   params,
@@ -42,8 +41,6 @@ export default async function GameSupportPage({
       "iPhone model and iOS version:",
     ].join("\n"),
   );
-
-  if (game.slug === "geographica-flag-trek") return <FlagTrekSupport game={game} name={name} />;
 
   return (
     <>

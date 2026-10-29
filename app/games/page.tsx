@@ -21,14 +21,14 @@ export default function GamesPage() {
       <section className="section">
         <div className="card-grid">
           {games.map((game) => (
-            <article className="card" key={game.slug}>
-              <span className="tag">{statusLabel(game.status)}</span>
-              <div>
-                <h3>{displayName(game)}</h3>
-                <p>{game.shortDescription}</p>
-                <Link className="button" href={`/games/${game.slug}`}>Explore the game</Link>
-              </div>
-            </article>
+          <article className="card" key={game.slug}>
+            <span className="tag">{statusLabel(game.status)}</span>
+            <div>
+              <h3>{displayName(game)}</h3>
+              <p>{game.shortDescription}</p>
+              <Link className="button" href={`/games/${game.slug}`}>Explore the game</Link>
+            </div>
+          </article>
           ))}
         </div>
       </section>
