@@ -14,11 +14,11 @@ export default function HomePage() {
           <p className="eyebrow">Knowlly Games</p>
           <h1>Play something good.</h1>
           <p className="lede">
-            Small, polished games designed around clear ideas, tactile interaction and the feeling that one more round is worth it.
+            Exactly One is out now: 100 tactile logic puzzles, a fresh daily challenge, and one simple rule to master.
           </p>
           <div className="cta-row">
-            <Link className="button primary" href="/games">See the games</Link>
-            <Link className="button" href="/support">Get support</Link>
+            <a className="button primary" href="https://apps.apple.com/us/app/exactly-one-logic-puzzle/id6818081491">Get Exactly One — Free</a>
+            <Link className="button" href="/games/exactly-one">Explore the game</Link>
           </div>
         </div>
 
@@ -28,6 +28,15 @@ export default function HomePage() {
               index === 6 || index === 13 ? <i key={index} /> : <span key={index} />
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="section geo-teaser">
+        <div>
+          <p className="eyebrow">A new Knowlly Games world</p>
+          <h2>Meet Geographica. 🌍</h2>
+          <p className="lede">Flags, maps, capitals and daily geography puzzles. A new collection of bite-sized ways to explore the world is taking shape.</p>
+          <Link className="button primary" href="/geographica">Explore Geographica</Link>
         </div>
       </section>
 

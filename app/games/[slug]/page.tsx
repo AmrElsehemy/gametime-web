@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { displayName, getGame } from "@/lib/games";
+import { displayName, getGame, statusLabel } from "@/lib/games";
 
 export async function generateMetadata({
   params,
@@ -41,7 +41,7 @@ export default async function GamePage({
       <section className="hero">
         <div>
           <p className="eyebrow">
-            {name} · {game.status === "development" ? "In development" : game.status}
+            {name} · {statusLabel(game.status)}
           </p>
           <h1>{game.publicName ?? "Something tactile is taking shape."}</h1>
           <p className="lede">{game.premise}</p>
@@ -55,32 +55,38 @@ export default async function GamePage({
           </div>
         </div>
 
-        {game.showPebblePreview && (
-          <div className="game-preview" aria-label="Abstract preview of the territory-placement game">
+        <div className="game-preview" aria-label={`Abstract preview of ${name}`}>
+          {game.preview === "bottles" ? (
+            <div className="preview-bottles" aria-hidden="true">
+              {Array.from({ length: 5 }, (_, index) => (
+                <span key={index} />
+              ))}
+            </div>
+          ) : (
             <div className="preview-grid" aria-hidden="true">
               {Array.from({ length: 16 }, (_, index) => (
                 index === 1 || index === 11 ? <i key={index} /> : <span key={index} />
               ))}
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </section>
 
       <section className="section">
         <div className="section-heading">
           <div>
             <p className="eyebrow">The idea</p>
-            <h2>{game.idea.heading}</h2>
+            <h2>{game.rulesHeading}</h2>
           </div>
         </div>
 
         <div className="card-grid">
-          {game.idea.cards.map((card) => (
-            <article className="card" key={card.title}>
-              <span className="tag">{card.tag}</span>
+          {game.rules.map((rule) => (
+            <article className="card" key={rule.tag}>
+              <span className="tag">{rule.tag}</span>
               <div>
-                <h3>{card.title}</h3>
-                <p>{card.body}</p>
+                <h3>{rule.title}</h3>
+                <p>{rule.body}</p>
               </div>
             </article>
           ))}

@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { displayName, games } from "@/lib/games";
+import { supportEmail } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Support",
@@ -12,16 +15,20 @@ export default function SupportPage() {
         <p className="eyebrow">Support</p>
         <h1>Need a hand?</h1>
         <p className="lede">
-          Game-specific troubleshooting and contact details will live here as titles launch.
+          Email <a href={`mailto:${supportEmail}`}>{supportEmail}</a> and a person will reply.
         </p>
       </section>
 
       <section className="section">
         <div className="legal-card">
-          <h3>Before launch</h3>
-          <p>
-            There are no public Knowlly Games releases to support yet. This page exists now so the release pipeline has a stable support destination without inventing fake products or links.
-          </p>
+          <h3>Game help</h3>
+          <ul>
+            {games.map((game) => (
+              <li key={game.slug}>
+                <Link href={game.supportPath}>{displayName(game)} support</Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
     </>

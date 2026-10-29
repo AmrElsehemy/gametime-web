@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { supportEmail, supportMailto } from "@/lib/support";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { displayName, getGame } from "@/lib/games";
+import { supportEmail } from "@/lib/site";
 import { FlagTrekPrivacy } from "./FlagTrekPrivacy";
 
 export async function generateMetadata({
@@ -15,8 +15,8 @@ export async function generateMetadata({
   if (!game) return { title: "Privacy" };
 
   return {
-    title: `${displayName(game)} Privacy`,
-    description: `Privacy information for ${displayName(game)} from Knowlly Games.`,
+    title: `${displayName(game)} Privacy Policy`,
+    description: `Privacy policy for ${displayName(game)} from Knowlly Games.`,
   };
 }
 
@@ -36,89 +36,62 @@ export default async function GamePrivacyPage({
   return (
     <>
       <section className="page-hero">
-        <p className="eyebrow">{name} · Privacy</p>
-        <h1>Your privacy.</h1>
+        <p className="eyebrow">{name} · Privacy Policy</p>
+        <h1>We don&rsquo;t collect your data.</h1>
         <p className="lede">
-          This policy explains how Knowlly Games handles information in {name}.
-          Effective September 24, 2026.
+          {name} is an offline puzzle game. It has no account, no ads, no tracking and no in-app purchases, and it does not send your data to Knowlly Games.
         </p>
       </section>
 
       <section className="legal-card">
-        <h2>Playing and saving on your device</h2>
+        <p>Effective {game.privacyEffective}. This policy covers the {name} iOS app and this website.</p>
+
+        <h2>Data stored on your device</h2>
         <p>
-          No Knowlly account is required. Bundled puzzles work offline. Puzzle
-          progress, the active puzzle, daily and streak progress, tutorial completion,
-          sound and haptic preferences, and a first-open flag are stored on your
-          device. The app does not upload these records to a Knowlly server.
-          Device backups may be managed separately by your Apple settings.
+          The game saves {game.storedData}. This data stays on your device. It is not sent to us or to anyone else.
         </p>
-        <h2>Game Center</h2>
         <p>
-          The app requests Game Center authentication when normal play starts.
-          You can decline and continue playing. When connected, it sends completed
-          achievements and daily puzzle completion times to Apple Game Center,
-          associated with your Game Center player, and retrieves completed achievements.
-          Scores and your Game Center profile may be visible according to your
-          Apple settings. We do not copy this information to a separate backend.
-          Manage Game Center in your device settings. Apple’s handling of this
-          information is described in its <a href="https://www.apple.com/legal/privacy/data/en/game-center/">Game Center privacy notice</a>.
+          You can delete it at any time by deleting the app.
         </p>
-        <h2>Advertising and tracking</h2>
+
+        {game.usesGameCenter && (
+          <>
+            <h2>Game Center (optional)</h2>
+            <p>
+              If you sign in to Game Center, achievements and daily-puzzle times are sent to Apple&rsquo;s Game Center service. Apple handles that data under its own privacy policy, and your Game Center settings control who can see your profile and leaderboard entries. The game works fully without Game Center.
+            </p>
+          </>
+        )}
+
+        <h2>Advertising, tracking and analytics</h2>
         <p>
-          This version contains no advertising SDK and displays no ads. It does
-          not access your advertising identifier, request tracking permission,
-          or track you across other companies’ apps or websites.
+          {name} shows no ads, does not track you across other apps or websites, and does not use third-party analytics. It does not ask for tracking permission because it does not track.
         </p>
-        <h2>Analytics, diagnostics and replays</h2>
-        <p>
-          Gameplay events, timing, diagnostic breadcrumbs and puzzle replays are
-          held locally in memory for the current session. The analytics event
-          buffer keeps at most 200 events. Development builds can print events to
-          the local console and export replay files locally. There is no remote
-          analytics service, crash-reporting SDK or automatic diagnostic upload.
-          Apple may separately process diagnostics according to your device and
-          TestFlight settings.
-        </p>
+
         <h2>Purchases</h2>
+        <p>{name} has no in-app purchases.</p>
+
+        <h2>If you contact us</h2>
         <p>
-          This version has no paid entitlements or in-app purchase flow. If you
-          tap Restore Purchases, StoreKit asks Apple to synchronize purchase
-          information. The app does not send receipts or purchase history to
-          Knowlly and does not receive payment-card details.
+          If you email us, we receive your email address and whatever you choose to include. We use it only to answer you, and we do not share it or add you to any mailing list.
         </p>
-        <h2>Contacting support</h2>
+
+        <h2>This website</h2>
         <p>
-          Report a Problem opens our support website without attaching diagnostics.
-          If you email us, we receive your email address, message and any attachments
-          you choose to send. We use them to respond, investigate the issue and
-          handle privacy requests. Email providers process correspondence to deliver
-          and store it. We keep support correspondence only as long as needed to
-          handle the request and meet applicable legal obligations; you may request
-          deletion by emailing <a href={supportMailto}>{supportEmail}</a>.
-          Do not send passwords or payment-card details.
+          knowlly.games uses Vercel Web Analytics to count page views. It does not use cookies and does not follow you to other sites.
         </p>
-        <h2>Website visits</h2>
+
+        <h2>Children</h2>
+        <p>{name} does not collect personal information from anyone, including children.</p>
+
+        <h2>Changes</h2>
         <p>
-          Opening a support or privacy link makes a separate website request.
-          The hosting service receives connection information such as your IP
-          address and browser details to deliver and protect the site. These
-          pages contain no added advertising or analytics SDK.
+          If this policy changes, for example because a future version adds a new feature that uses data, we will update this page and its effective date before that version is released.
         </p>
-        <h2>Your choices and deletion</h2>
+
+        <h2>Contact</h2>
         <p>
-          Settings → Reset Gameplay Data clears local gameplay and tutorial
-          progress, while keeping sound and haptic preferences. It does not erase
-          Game Center records or the first-open flag. Deleting the app removes
-          its local app data; Apple backups and Game Center records are managed
-          separately through Apple. Contact us for access, correction or deletion
-          of support correspondence and other privacy requests.
-        </p>
-        <h2>Policy updates</h2>
-        <p>
-          We update this policy when our data practices change and show the
-          effective date above. Privacy questions can be sent to
-          {" "}<a href={supportMailto}>{supportEmail}</a>.
+          Knowlly Games · <a href={`mailto:${supportEmail}`}>{supportEmail}</a>
         </p>
 
         <p>

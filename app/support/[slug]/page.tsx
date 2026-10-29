@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { supportEmail, supportMailto } from "@/lib/support";
+import { supportEmail, supportMailto } from "@/lib/site";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { displayName, getGame } from "@/lib/games";
@@ -30,6 +30,18 @@ export default async function GameSupportPage({
   if (!game) notFound();
 
   const name = displayName(game);
+  const problemReport = supportMailto(
+    `${name}: problem report`,
+    [
+      "What happened:",
+      "",
+      "What you expected:",
+      "",
+      ...game.problemReportFields,
+      "App version and build (Settings → About):",
+      "iPhone model and iOS version:",
+    ].join("\n"),
+  );
 
   if (game.slug === "geographica-flag-trek") return <FlagTrekSupport game={game} name={name} />;
 
@@ -39,66 +51,46 @@ export default async function GameSupportPage({
         <p className="eyebrow">{name} · Support</p>
         <h1>Help with the game.</h1>
         <p className="lede">
-          Get help with {name}, report a puzzle problem, or ask about your data.
+          Questions, bugs or feedback: email us and a person will reply.
         </p>
+        <div className="cta-row">
+          <a className="button primary" href={supportMailto(`${name}: support`)}>
+            Email {supportEmail}
+          </a>
+          <a className="button" href={problemReport}>
+            Report a problem
+          </a>
+        </div>
       </section>
 
       <section className="section">
         <div className="card-grid">
-          <article className="card">
-            <span className="tag">Gameplay</span>
-            <div>
-              <h3>A puzzle feels stuck</h3>
-              <p>
-                Use Reset to return the current puzzle to its starting state, or Undo to reverse a move. Each puzzle has one solution.
-              </p>
-            </div>
-          </article>
-
-          <article className="card">
-            <span className="tag">Offline play</span>
-            <div>
-              <h3>No connection?</h3>
-              <p>
-                You can play bundled puzzles offline. Game Center needs an internet connection for achievements and daily leaderboard submissions, but is not required to play.
-              </p>
-            </div>
-          </article>
-
-          <article className="card">
-            <span className="tag">Report a problem</span>
-            <div>
-              <h3>Something is wrong</h3>
-              <p>
-                Open Settings → Report a Problem to return to this page, then email us below. The app does not automatically upload diagnostics or attach a replay.
-              </p>
-            </div>
-          </article>
+          {game.supportCards.map((card) => (
+            <article className="card" key={card.tag}>
+              <span className="tag">{card.tag}</span>
+              <div>
+                <h3>{card.title}</h3>
+                <p>{card.body}</p>
+              </div>
+            </article>
+          ))}
         </div>
       </section>
 
       <section className="section">
         <div className="legal-card">
-          <h3>Before contacting support</h3>
+          <h3>Reporting a problem</h3>
           <p>
-            Include the app version, iOS version and puzzle number when available. Do not send passwords, payment-card details or other sensitive information.
+            Tell us what happened, where in the game it happened, and the app version and build from Settings → About. Please don&rsquo;t send passwords or payment details.
           </p>
+          <h2>Purchases</h2>
+          <p>{name} has no ads and no in-app purchases, so there is nothing to buy or restore.</p>
           <h2>Contact</h2>
           <p>
-            Email <a href={supportMailto}>{supportEmail}</a> with the subject
-            “Exactly One Support”. This is Knowlly’s existing public contact inbox.
-            You can also use it for privacy and deletion requests.
-          </p>
-          <h2>Settings and saved progress</h2>
-          <p>
-            Settings includes sound and haptic controls. Reset Gameplay Data clears
-            local puzzle, daily, streak and tutorial progress; it keeps sound and
-            haptic preferences and does not delete Game Center achievements.
-            This version has no paid entitlements. Restore Purchases performs an
-            Apple account synchronization check.
+            <a href={`mailto:${supportEmail}`}>{supportEmail}</a>
           </p>
           <p>
-            <Link href={game.privacyPath}>Privacy details</Link> ·{" "}
+            <Link href={game.privacyPath}>Privacy policy</Link> ·{" "}
             <Link href={`/games/${game.slug}`}>Game page</Link>
           </p>
         </div>
