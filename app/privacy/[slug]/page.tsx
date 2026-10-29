@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { displayName, getGame } from "@/lib/games";
 import { supportEmail } from "@/lib/site";
+import { FlagTrekPrivacy } from "./FlagTrekPrivacy";
 
 export async function generateMetadata({
   params,
@@ -29,6 +30,9 @@ export default async function GamePrivacyPage({
   if (!game) notFound();
 
   const name = displayName(game);
+
+  // Flag Trek keeps its own, more detailed policy.
+  if (game.slug === "geographica-flag-trek") return <FlagTrekPrivacy game={game} name={name} />;
 
   return (
     <>
