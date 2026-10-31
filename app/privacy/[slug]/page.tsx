@@ -38,9 +38,9 @@ export default async function GamePrivacyPage({
     <>
       <section className="page-hero">
         <p className="eyebrow">{name} · Privacy Policy</p>
-        <h1>We don&rsquo;t collect your data.</h1>
+        <h1>No account. No tracking. Anonymous stats only.</h1>
         <p className="lede">
-          {name} is an offline puzzle game. It has no account, no ads, no tracking and no in-app purchases, and it does not send your data to Knowlly Games.
+          {name} is an offline puzzle game with no account, no ads, no tracking and no in-app purchases. It can send us anonymous gameplay statistics, and you can turn that off at any time in Settings.
         </p>
       </section>
 
@@ -64,9 +64,20 @@ export default async function GamePrivacyPage({
           </>
         )}
 
-        <h2>Advertising, tracking and analytics</h2>
+        <h2>Anonymous usage statistics</h2>
         <p>
-          {name} shows no ads, does not track you across other apps or websites, and does not use third-party analytics. It does not ask for tracking permission because it does not track.
+          To learn which puzzles players finish, find too hard or give up on, the game sends us anonymous gameplay events, such as a level being started, finished or reset, how long it took and whether a hint was used, together with the app version, the device type (iPhone or iPad), the iOS version and the app language.
+        </p>
+        <p>
+          These events are tied only to a random identifier created when you first open the game. It is not your name, email, Apple ID, Game Center identity, advertising identifier or location, and it disappears when you delete the app. We do not use this data to identify you, build a profile of you or show you ads, and we do not sell it.
+        </p>
+        <p>
+          Sharing is on by default. Turn off <strong>Share anonymous usage data</strong> in the game&rsquo;s Settings and it stops immediately. Events are processed for us by PostHog, our analytics provider, on servers in the European Union, without storing your IP address or a location derived from it.
+        </p>
+
+        <h2>Advertising and tracking</h2>
+        <p>
+          {name} shows no ads and does not track you across other companies&rsquo; apps or websites. It does not ask for tracking permission because it does not track.
         </p>
 
         <h2>Purchases</h2>
