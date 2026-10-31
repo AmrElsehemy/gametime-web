@@ -21,6 +21,12 @@ export type GameRecord = {
   /** What the game sends to Game Center, or null if it does not use Game Center. */
   gameCenterData: string | null;
   privacyEffective: string;
+  /**
+   * True once the App Store version that sends anonymous usage statistics (PostHog) is live. Until
+   * then the privacy page keeps describing the shipped app, which collects nothing. Flip it, and
+   * update `privacyEffective`, when that version is released.
+   */
+  usageAnalytics: boolean;
 };
 
 export const games: GameRecord[] = [
@@ -61,11 +67,12 @@ export const games: GameRecord[] = [
     storedData: "your puzzle progress, your current puzzle, your daily streak, whether you have finished the introduction, and your sound and haptics settings",
     gameCenterData: "achievements and daily-puzzle times",
     privacyEffective: "30 September 2026",
+    usageAnalytics: false,
   },
   {
     slug: "top-off",
     publicName: "Top Off",
-    status: "development",
+    status: "review",
     premise: "A calm, tactile pouring puzzle. Pour matching colours until every bottle is full of one colour, or empty.",
     shortDescription: "Top Off is a calm, tactile pouring puzzle. Pour, sort, and top off.",
     appStoreUrl: null,
@@ -99,6 +106,7 @@ export const games: GameRecord[] = [
     storedData: "your level progress and stars, your daily streak, and your sound and haptics settings",
     gameCenterData: null,
     privacyEffective: "9 October 2026",
+    usageAnalytics: false,
   },
   {
     slug: "geographica-flag-trek",
@@ -137,6 +145,7 @@ export const games: GameRecord[] = [
     storedData: "your trek progress and stars, whether you have finished the tutorial, your sound and haptics settings, and any Daily Challenge score waiting to be sent to Game Center",
     gameCenterData: "the score of your first Daily Challenge attempt each day",
     privacyEffective: "18 October 2026",
+    usageAnalytics: false,
   },
 ];
 

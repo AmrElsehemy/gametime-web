@@ -44,14 +44,33 @@ export function FlagTrekPrivacy({ game, name }: { game: GameRecord; name: string
           or track you across other companies’ apps or websites.
         </p>
         <h2>Analytics and diagnostics</h2>
-        <p>
-          Gameplay events, such as which flags were answered correctly and how
-          long a round took, carry a random per-attempt identifier and no
-          personal information. In this version they are written only to the
-          device log. There is no remote analytics service, crash-reporting SDK
-          or automatic diagnostic upload. Apple may separately process
-          diagnostics according to your device and TestFlight settings.
-        </p>
+        {game.usageAnalytics ? (
+            <p>
+              Gameplay events, such as which flags were answered correctly and how
+              long a round took, are sent to us anonymously so we can see which
+              stops are too hard and where players stop. They carry the app
+              version, device type, iOS version and app language, a random
+              per-attempt identifier and a random identifier created when you first
+              open the app, and no personal information: no name, email, Apple ID,
+              Game Center identity, advertising identifier or location. Sharing is
+              on by default; turn off <strong>Share anonymous usage data</strong> in
+              Settings and it stops immediately. Events are processed for us by
+              PostHog, our analytics provider, on servers in the European Union,
+              without storing your IP address. We do not use them to identify you or
+              for advertising, and we do not sell them. There is no crash-reporting
+              SDK or automatic diagnostic upload. Apple may separately process
+              diagnostics according to your device and TestFlight settings.
+            </p>
+        ) : (
+            <p>
+              Gameplay events, such as which flags were answered correctly and how
+              long a round took, carry a random per-attempt identifier and no
+              personal information. In this version they are written only to the
+              device log. There is no remote analytics service, crash-reporting SDK
+              or automatic diagnostic upload. Apple may separately process
+              diagnostics according to your device and TestFlight settings.
+            </p>
+        )}
         <h2>Purchases</h2>
         <p>
           This version has no in-app purchases and no paid features.
