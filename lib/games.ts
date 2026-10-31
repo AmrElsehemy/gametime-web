@@ -21,6 +21,12 @@ export type GameRecord = {
   /** What the game sends to Game Center, or null if it does not use Game Center. */
   gameCenterData: string | null;
   privacyEffective: string;
+  /**
+   * True once the App Store version that sends anonymous usage statistics (PostHog) is live. Until
+   * then the privacy page keeps describing the shipped app, which collects nothing. Flip it, and
+   * update `privacyEffective`, when that version is released.
+   */
+  usageAnalytics: boolean;
 };
 
 export const games: GameRecord[] = [
@@ -60,7 +66,8 @@ export const games: GameRecord[] = [
     problemReportFields: ["Puzzle number (if any):"],
     storedData: "your puzzle progress, your current puzzle, your daily streak, whether you have finished the introduction, and your sound and haptics settings",
     gameCenterData: "achievements and daily-puzzle times",
-    privacyEffective: "31 October 2026",
+    privacyEffective: "30 September 2026",
+    usageAnalytics: false,
   },
   {
     slug: "top-off",
@@ -98,7 +105,8 @@ export const games: GameRecord[] = [
     problemReportFields: ["Level or mode (Campaign, Daily, Endless):"],
     storedData: "your level progress and stars, your daily streak, and your sound and haptics settings",
     gameCenterData: null,
-    privacyEffective: "31 October 2026",
+    privacyEffective: "9 October 2026",
+    usageAnalytics: false,
   },
   {
     slug: "geographica-flag-trek",
@@ -136,7 +144,8 @@ export const games: GameRecord[] = [
     problemReportFields: ["Stop or Daily Challenge:", "Flag\u2019s country (if it is about an answer):"],
     storedData: "your trek progress and stars, whether you have finished the tutorial, your sound and haptics settings, and any Daily Challenge score waiting to be sent to Game Center",
     gameCenterData: "the score of your first Daily Challenge attempt each day",
-    privacyEffective: "31 October 2026",
+    privacyEffective: "18 October 2026",
+    usageAnalytics: false,
   },
 ];
 
